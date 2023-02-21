@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var demoFirebase = FirebaseDemo()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            List($demoFirebase.notes){item in
+                Text(item.text.wrappedValue)
+            }
+        }
+        .onAppear(){
+//            demoFirebase.addItem(text: "hello from View")
+            demoFirebase.startListener()
         }
         .padding()
     }
