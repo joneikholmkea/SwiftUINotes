@@ -9,15 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var demoFirebase = FirebaseDemo()
+    var firebaseExtra = FirebaseExtra()
     var body: some View {
         VStack {
             List($demoFirebase.notes){item in
-                Text(item.text.wrappedValue)
+                HStack{
+                    Text(item.text.wrappedValue)
+                    //Image(uiImage: item.image)
+                }
             }
         }
         .onAppear(){
-//            demoFirebase.addItem(text: "hello from View")
-            demoFirebase.startListener()
+            //demoFirebase.downloadImage()
+//            demoFirebase.startListener()
+            firebaseExtra.downloadImage()
         }
         .padding()
     }

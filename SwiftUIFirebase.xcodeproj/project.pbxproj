@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FC0C163429A4AC0900C46619 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0C163329A4AC0900C46619 /* DemoView.swift */; };
 		FC0C163829A4AC7400C46619 /* FirebaseDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0C163729A4AC7400C46619 /* FirebaseDemo.swift */; };
+		FC6B168429A5FD5700B2DF62 /* FirebaseExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6B168329A5FD5700B2DF62 /* FirebaseExtra.swift */; };
 		FC93076D299B81CA00FF53CB /* SwiftUIFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93076C299B81CA00FF53CB /* SwiftUIFirebaseApp.swift */; };
 		FC93076F299B81CA00FF53CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93076E299B81CA00FF53CB /* ContentView.swift */; };
 		FC930771299B81CC00FF53CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC930770299B81CC00FF53CB /* Assets.xcassets */; };
@@ -18,11 +19,15 @@
 		FC930780299B829800FF53CB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FC93077F299B829800FF53CB /* FirebaseStorage */; };
 		FC930782299B899100FF53CB /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC930781299B899100FF53CB /* FirebaseService.swift */; };
 		FC930784299B945800FF53CB /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC930783299B945800FF53CB /* Note.swift */; };
+		FCC51F9129AD37830021C551 /* ListDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC51F9029AD37830021C551 /* ListDemo.swift */; };
+		FCC51F9329AD37990021C551 /* MyFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC51F9229AD37990021C551 /* MyFileManager.swift */; };
+		FCC51F9529AD37AF0021C551 /* DetailViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC51F9429AD37AF0021C551 /* DetailViewDemo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FC0C163329A4AC0900C46619 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 		FC0C163729A4AC7400C46619 /* FirebaseDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDemo.swift; sourceTree = "<group>"; };
+		FC6B168329A5FD5700B2DF62 /* FirebaseExtra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseExtra.swift; sourceTree = "<group>"; };
 		FC930769299B81CA00FF53CB /* SwiftUIFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC93076C299B81CA00FF53CB /* SwiftUIFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFirebaseApp.swift; sourceTree = "<group>"; };
 		FC93076E299B81CA00FF53CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,6 +36,9 @@
 		FC93077A299B821300FF53CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC930781299B899100FF53CB /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FC930783299B945800FF53CB /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		FCC51F9029AD37830021C551 /* ListDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDemo.swift; sourceTree = "<group>"; };
+		FCC51F9229AD37990021C551 /* MyFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFileManager.swift; sourceTree = "<group>"; };
+		FCC51F9429AD37AF0021C551 /* DetailViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewDemo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,15 +73,13 @@
 		FC93076B299B81CA00FF53CB /* SwiftUIFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				FCC51F8F29AD37270021C551 /* repo */,
+				FCC51F8D29AD36F90021C551 /* model */,
+				FCC51F8C29AD36DD0021C551 /* view */,
 				FC93077A299B821300FF53CB /* GoogleService-Info.plist */,
 				FC93076C299B81CA00FF53CB /* SwiftUIFirebaseApp.swift */,
-				FC93076E299B81CA00FF53CB /* ContentView.swift */,
 				FC930770299B81CC00FF53CB /* Assets.xcassets */,
 				FC930772299B81CC00FF53CB /* Preview Content */,
-				FC930781299B899100FF53CB /* FirebaseService.swift */,
-				FC930783299B945800FF53CB /* Note.swift */,
-				FC0C163329A4AC0900C46619 /* DemoView.swift */,
-				FC0C163729A4AC7400C46619 /* FirebaseDemo.swift */,
 			);
 			path = SwiftUIFirebase;
 			sourceTree = "<group>";
@@ -84,6 +90,36 @@
 				FC930773299B81CC00FF53CB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FCC51F8C29AD36DD0021C551 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				FCC51F9429AD37AF0021C551 /* DetailViewDemo.swift */,
+				FCC51F9029AD37830021C551 /* ListDemo.swift */,
+				FC0C163329A4AC0900C46619 /* DemoView.swift */,
+				FC93076E299B81CA00FF53CB /* ContentView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		FCC51F8D29AD36F90021C551 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				FC930783299B945800FF53CB /* Note.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		FCC51F8F29AD37270021C551 /* repo */ = {
+			isa = PBXGroup;
+			children = (
+				FCC51F9229AD37990021C551 /* MyFileManager.swift */,
+				FC930781299B899100FF53CB /* FirebaseService.swift */,
+				FC0C163729A4AC7400C46619 /* FirebaseDemo.swift */,
+				FC6B168329A5FD5700B2DF62 /* FirebaseExtra.swift */,
+			);
+			path = repo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +202,11 @@
 			files = (
 				FC93076F299B81CA00FF53CB /* ContentView.swift in Sources */,
 				FC930782299B899100FF53CB /* FirebaseService.swift in Sources */,
+				FCC51F9129AD37830021C551 /* ListDemo.swift in Sources */,
+				FCC51F9329AD37990021C551 /* MyFileManager.swift in Sources */,
+				FCC51F9529AD37AF0021C551 /* DetailViewDemo.swift in Sources */,
 				FC93076D299B81CA00FF53CB /* SwiftUIFirebaseApp.swift in Sources */,
+				FC6B168429A5FD5700B2DF62 /* FirebaseExtra.swift in Sources */,
 				FC0C163829A4AC7400C46619 /* FirebaseDemo.swift in Sources */,
 				FC0C163429A4AC0900C46619 /* DemoView.swift in Sources */,
 				FC930784299B945800FF53CB /* Note.swift in Sources */,
