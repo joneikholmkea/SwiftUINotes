@@ -1,6 +1,6 @@
 //
-//  FileManager.swift
-//  SUIfirst
+//  MyFileManager.swift
+//  Can save data (less than ≈ 1MB) to local storage, called userDefaults
 //
 //  Created by Jon Eikholm on 07/02/2023.
 //

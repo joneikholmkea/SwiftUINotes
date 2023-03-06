@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseStorage
 import UIKit
+import MapKit
 var fService = FirebaseService() // global scope
 
 class FirebaseService: ObservableObject{
@@ -16,10 +17,13 @@ class FirebaseService: ObservableObject{
     let storage = Storage.storage() // for files
     private let notesColl = "notes"
     @Published var notes = [Note]() // empty array
-    @Published var transferNote:Note?
-    var currentNoteIndex = 0
     private let hasImage = "hasImage"
     private let text = "text"
+    private let location = "location"
+    @Published var didSelectLocation = false
+    @Published var currentLocation:Location?
+    @Published var isConfirmShowing = false
+    @Published var mapTappedNote:Note? = nil
     
     init(){
         startListener()
@@ -41,10 +45,22 @@ class FirebaseService: ObservableObject{
             deleteImage(note: note)
         }
         let doc = db.collection(notesColl).document(note.id) // gets the document reference
-        var data = [String:Any]() // creates a new empty dictionary
-        data[text] = note.text
-        data[hasImage] = note.hasImage
-        doc.setData(data) // saves to Firestore.
+        doc.updateData([
+            text : note.text,
+            hasImage: note.hasImage
+        ])
+//        var data = [String:Any]() // creates a new empty dictionary
+//        data[text] = note.text
+//        data[hasImage] = note.hasImage
+        if let loc = note.location, didSelectLocation {
+            print("saving loc to firebase")
+            let gp = GeoPoint(latitude: loc.latitude, longitude: loc.longitude)
+            doc.updateData([
+                location : gp
+            ])
+            didSelectLocation = false
+        }
+//        doc.setData(data) // saves to Firestore.
     }
     
     func deleteImage(note:Note){
@@ -59,9 +75,8 @@ class FirebaseService: ObservableObject{
     }
     
     func uploadImage(note:Note){
-//        let note = Note(id: UUID().description, text: "demo note")
-//            let note = notes[currentNoteIndex]
         if let img = note.image{
+                deleteImage(note: note) // delete first the old image.
                 let data = img.jpegData(compressionQuality: 1.0)!
                 let imageRef = storage.reference().child(note.id)
                 let metaData = StorageMetadata()
@@ -69,15 +84,14 @@ class FirebaseService: ObservableObject{
                 imageRef.putData(data, metadata: metaData) { meta, error in  // if file exist, no upload
                     if error == nil {
                         print("UPload OK")
-                        //self.parentTVC?.update(image: nil)
                     }else {
-                        print("upload not OK \(error)")
+                        print("upload not OK \(error.debugDescription)")
                     }
                 }
             }
     }
     
-    func downloadImage(note:Note, completion: @escaping (UIImage?) -> Void){
+    func downloadImage(note:Note, completion: @escaping (UIImage?) -> Void) {
         print("downloadImage()")
         let imageRef = storage.reference(withPath: note.id)
         imageRef.getData(maxSize: 7000000) { data, error in
@@ -103,7 +117,9 @@ class FirebaseService: ObservableObject{
                             , let hasImage = doc.data()[self.hasImage] as? Bool{
                             print(txt)
                             let note = Note(id: doc.documentID, text: txt, hasImage: hasImage)
-                            
+                            if let loc = doc.data()[self.location] as? GeoPoint{
+                                note.location = Location(latitude: loc.latitude, longitude: loc.longitude)
+                            }
                             self.notes.append(note)
                         }
                     }

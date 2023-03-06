@@ -13,6 +13,7 @@ class Note:Identifiable {
     var text:String
     var image:UIImage? = nil
     var hasImage = false
+    var location:Location? = nil
     
     init(id: String, text: String, hasImage:Bool) {
         self.id = id
