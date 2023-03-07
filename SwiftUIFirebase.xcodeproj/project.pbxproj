@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC448A3229B7224B0005C278 /* MapWrapDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC448A3129B7224B0005C278 /* MapWrapDemo.swift */; };
 		FC93076D299B81CA00FF53CB /* SwiftUIFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93076C299B81CA00FF53CB /* SwiftUIFirebaseApp.swift */; };
 		FC930771299B81CC00FF53CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC930770299B81CC00FF53CB /* Assets.xcassets */; };
 		FC930774299B81CC00FF53CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC930773299B81CC00FF53CB /* Preview Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC448A3129B7224B0005C278 /* MapWrapDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWrapDemo.swift; sourceTree = "<group>"; };
 		FC930769299B81CA00FF53CB /* SwiftUIFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC93076C299B81CA00FF53CB /* SwiftUIFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFirebaseApp.swift; sourceTree = "<group>"; };
 		FC930770299B81CC00FF53CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				FCC51F9029AD37830021C551 /* ListView.swift */,
 				FCF20C2F29B111D700238BE5 /* MyMap.swift */,
 				FCF20C3529B24A3200238BE5 /* MapWrap.swift */,
+				FC448A3129B7224B0005C278 /* MapWrapDemo.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				FCF20C3829B366EB00238BE5 /* MyRegion.swift in Sources */,
 				FCF20C3629B24A3200238BE5 /* MapWrap.swift in Sources */,
 				FCF20C3229B1133A00238BE5 /* Location.swift in Sources */,
+				FC448A3229B7224B0005C278 /* MapWrapDemo.swift in Sources */,
 				FC930784299B945800FF53CB /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

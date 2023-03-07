@@ -23,8 +23,6 @@ struct SwiftUIFirebaseApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            MyMap().environmentObject(ApplicationData())
-//            MapWrap()
             ListView()
         }
     }

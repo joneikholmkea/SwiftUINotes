@@ -50,7 +50,7 @@ struct MyMap: UIViewRepresentable {
                     let location = gestureRecognizer.location(in: gestureRecognizer.view)
                     let coordinate = parent.map.convert(location, toCoordinateFrom: parent.map)
                     let loc = Location(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                    fService.currentLocation = loc
+                    fService.currentLocation = loc // for later use
                     fService.isConfirmShowing = true
                     print("Long press at: \(coordinate.latitude), \(coordinate.longitude)")
                 }
@@ -59,12 +59,10 @@ struct MyMap: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
             if let anno = annotation as? MyCustomAnnotation{
                 print("some annotation clicekd \(anno.note)")
-//                anno.note.location = Location(latitude: anno.coordinate.latitude, longitude: anno.coordinate.longitude)
                 fService.mapTappedNote = anno.note
                 parent.mode.wrappedValue.dismiss()
             }
         }
-        
         }
 }
 

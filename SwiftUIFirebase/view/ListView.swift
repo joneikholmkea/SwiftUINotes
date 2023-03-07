@@ -11,8 +11,6 @@ struct ListView: View {
     @ObservedObject var fileMan = fService
     var show = false
     var body: some View {
-        
-//        }else {
             NavigationStack{
                 if let note = fileMan.mapTappedNote{
                     DetailView(note: note)

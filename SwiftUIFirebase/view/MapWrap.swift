@@ -29,7 +29,6 @@ struct MapWrap: View {
                         self.mode.wrappedValue.dismiss()
                     }
                 }
-            Text(String(theMap.map.convert(longPressLocation, toCoordinateFrom: theMap.map).longitude))
         }.onAppear(){
             fService.mapTappedNote = nil // reset last selection
         }

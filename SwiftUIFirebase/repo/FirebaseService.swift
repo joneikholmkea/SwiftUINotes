@@ -20,6 +20,7 @@ class FirebaseService: ObservableObject{
     private let hasImage = "hasImage"
     private let text = "text"
     private let location = "location"
+    
     @Published var didSelectLocation = false
     @Published var currentLocation:Location?
     @Published var isConfirmShowing = false
@@ -49,9 +50,6 @@ class FirebaseService: ObservableObject{
             text : note.text,
             hasImage: note.hasImage
         ])
-//        var data = [String:Any]() // creates a new empty dictionary
-//        data[text] = note.text
-//        data[hasImage] = note.hasImage
         if let loc = note.location, didSelectLocation {
             print("saving loc to firebase")
             let gp = GeoPoint(latitude: loc.latitude, longitude: loc.longitude)
@@ -60,7 +58,6 @@ class FirebaseService: ObservableObject{
             ])
             didSelectLocation = false
         }
-//        doc.setData(data) // saves to Firestore.
     }
     
     func deleteImage(note:Note){
