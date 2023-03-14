@@ -23,6 +23,7 @@ struct SwiftUIFirebaseApp: App {
 
     var body: some Scene {
         WindowGroup {
+//            Home()
             ListView()
         }
     }

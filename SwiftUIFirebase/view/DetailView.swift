@@ -14,14 +14,14 @@ struct DetailView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var message:String = ""
     var note:Note  // new
+    @Binding var selection:Int
     var body: some View {
         NavigationStack{
             VStack{
                 HStack{
                     Button("Home") {
                         print("going home")
-                        //self.mode.wrappedValue.dismiss()
-                        
+                        fService.mapTappedNote = nil
                     }
                     Button("Save") {
                         print("saving")
@@ -48,8 +48,7 @@ struct DetailView: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: MapWrap()) {
-//                    print("location add...")
+                NavigationLink(destination: MapWrap(selection: $selection)) {
                     Text("Set location")
                 }
             }
@@ -67,6 +66,7 @@ struct DetailView: View {
         }.onAppear(){
             print("onAppear ")
             message = note.text
+            fService.mapTappedNote = note
             if note.hasImage {
                 fService.downloadImage(note: note){ imageFromFB in
                     picture = imageFromFB  // will be executed in FirebaseService class

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class Note:Identifiable {
     var id:String
@@ -14,6 +15,7 @@ class Note:Identifiable {
     var image:UIImage? = nil
     var hasImage = false
     var location:Location? = nil
+    var annotation:MKPointAnnotation? = nil
     
     init(id: String, text: String, hasImage:Bool) {
         self.id = id

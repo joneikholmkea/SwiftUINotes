@@ -14,11 +14,9 @@ struct MapWrap: View {
     @State var longPressLocation = CGPoint.zero
     @ObservedObject private var _fService = fService
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Binding var selection:Int
+    var theMap = MyMap(region: myRegion.region)
     
-    var theMap:MyMap
-    init(){
-        theMap = MyMap(region: myRegion.region)
-    }
     var body: some View {
         ZStack{
             theMap
@@ -31,6 +29,7 @@ struct MapWrap: View {
                 }
         }.onAppear(){
             fService.mapTappedNote = nil // reset last selection
+            
         }
     }
 }

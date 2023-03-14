@@ -21,11 +21,12 @@ class FirebaseService: ObservableObject{
     private let text = "text"
     private let location = "location"
     
+    @Published var selectedTab = 1
     @Published var didSelectLocation = false
     @Published var currentLocation:Location?
     @Published var isConfirmShowing = false
     @Published var mapTappedNote:Note? = nil
-    
+        
     init(){
         startListener()
     }
@@ -101,7 +102,6 @@ class FirebaseService: ObservableObject{
            }
        }
     
-    
     func startListener(){
         db.collection(notesColl).addSnapshotListener { snap, error in
             if let e = error {
@@ -116,6 +116,9 @@ class FirebaseService: ObservableObject{
                             let note = Note(id: doc.documentID, text: txt, hasImage: hasImage)
                             if let loc = doc.data()[self.location] as? GeoPoint{
                                 note.location = Location(latitude: loc.latitude, longitude: loc.longitude)
+                                    let annotation = MyCustomAnnotation(note: note)
+                                    annotation.coordinate = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
+                                note.annotation = annotation
                             }
                             self.notes.append(note)
                         }

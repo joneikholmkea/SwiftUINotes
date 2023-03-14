@@ -10,14 +10,19 @@ import MapKit
 
 struct MyMap: UIViewRepresentable {
     var region:MKCoordinateRegion
-    var myAnnotations = MyAnnotations()
     var map:MKMapView
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     init(region:MKCoordinateRegion){
         self.region = region
         let v = MKMapView(frame: .zero)
         v.region = region
-        v.addAnnotations(myAnnotations.annotations)
+        var annotations = [MKPointAnnotation]()
+        for note in fService.notes{
+            if let a = note.annotation {
+                annotations.append(a)
+            }
+        }
+        v.addAnnotations(annotations)
         map = v
     }
     
@@ -50,7 +55,7 @@ struct MyMap: UIViewRepresentable {
                     let location = gestureRecognizer.location(in: gestureRecognizer.view)
                     let coordinate = parent.map.convert(location, toCoordinateFrom: parent.map)
                     let loc = Location(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                    fService.currentLocation = loc // for later use
+                    fService.mapTappedNote?.location = loc // for later use
                     fService.isConfirmShowing = true
                     print("Long press at: \(coordinate.latitude), \(coordinate.longitude)")
                 }
@@ -60,23 +65,10 @@ struct MyMap: UIViewRepresentable {
             if let anno = annotation as? MyCustomAnnotation{
                 print("some annotation clicekd \(anno.note)")
                 fService.mapTappedNote = anno.note
-                parent.mode.wrappedValue.dismiss()
+                fService.selectedTab = 1
             }
         }
         }
-}
-
-class MyAnnotations{
-    var annotations = [MKPointAnnotation]()
-    init(){
-        for note in fService.notes {
-            if let loc = note.location{
-                let annotation = MyCustomAnnotation(note: note)
-                annotation.coordinate = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-                annotations.append(annotation)
-            }
-        }
-    }
 }
 
 class MyCustomAnnotation: MKPointAnnotation{
